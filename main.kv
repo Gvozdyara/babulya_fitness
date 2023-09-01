@@ -2,6 +2,26 @@
 <MenuLayout>:
 
 <MainActivity>:
+    BoxLayout:
+        orientation: "vertical"
+        ScrollView:
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                BoxLayout:
+                    id: body
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: "vertical"
+                BoxLayout:
+
+        Button:
+            text: "Add"
+            size_hint_y: None
+            height: dp(40)
+
+
 
 <BottomLayout>:
 
@@ -42,17 +62,34 @@
         size_hint_y: None
         height: dp(50)
     MainActivity:
-        Button:
-            text: "Success"
+        id: main_activity
     BottomLayout:
         size_hint_y: None
         height: dp(50)
 
 
 <LabelTextInput>:
+    size_hint_y: None
+    height: dp(40)
     Label:
         text: root.name
     RTextInput:
         id: text
     RTextInput:
         id: quant
+
+<DayLine>:
+    size_hint_y: None
+    height: dp(40)
+    Label:
+        text: root.value.get("date")
+    Label:
+        text: root.value.get("proteins", 0)
+    Label:
+        text: root.value.get("fats", 0)
+    Label:
+        text: root.value.get("carboh", 0)
+    Label:
+        text: root.value.get("calories", 0)
+    Button:
+        text: "..."

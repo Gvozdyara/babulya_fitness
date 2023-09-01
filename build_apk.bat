@@ -1,6 +1,6 @@
 set "app_win_home=%cd%"
-robocopy /s .\ *.py \\wsl.localhost\Ubuntu\home\makspeshkov\python_projects\babulya_fitness\src\ /xd venv
-robocopy /s  .\ *.kv \\wsl.localhost\Ubuntu\home\makspeshkov\python_projects\babulya_fitness\src\ /xd venv
+robocopy /s .\ *.py \\wsl.localhost\Ubuntu\home\makspeshkov\python_projects\babulya_fitness\src\ /xd venv __pycache__ .git .idea
+robocopy /s  .\ *.kv \\wsl.localhost\Ubuntu\home\makspeshkov\python_projects\babulya_fitness\src\ /xd venv __pycache__ .git .idea
 
 pause
 

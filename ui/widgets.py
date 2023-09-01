@@ -14,8 +14,18 @@ class MenuLayout(BoxLayout):
     ...
 
 
-class MainActivity(Screen):
-    ...
+class DayLine(BoxLayout):
+
+    def __init__(self, value: dict, **kwargs):
+        self.value = value
+        super(DayLine, self).__init__(**kwargs)
+
+
+class MainActivity(BoxLayout):
+    def show_data(self, diary: list):
+        for data in diary:
+            value: dict
+            self.ids.body.add_widget(DayLine(data))
 
 
 class BottomLayout(BoxLayout):
