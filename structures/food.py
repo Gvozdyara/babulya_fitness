@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+
+
 class Meal:
     """One meal like breakfast, lunch, etc."""
     
