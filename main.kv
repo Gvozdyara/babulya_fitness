@@ -1,9 +1,37 @@
 
-<MenuLayout@BoxLayout>:
+<MenuLayout>:
 
-<MainActivity@BoxLayout>:
+<MainActivity>:
 
-<BottomLayout@BoxLayout>:
+<BottomLayout>:
+
+<AddMealScreen>:
+    body: body
+    BoxLayout:
+        id: body
+        orientation: "vertical"
+        LabelTextInput:
+            name: "Название"
+        BoxLayout:
+            id: empty_spacing
+        BoxLayout:
+            BoxLayout:
+            Button:
+                text: "+"
+                size_hint: None, None
+                size: dp(50), dp(50)
+                on_release: root.add_line()
+        Button:
+            text: "Добавить блюдо"
+            size_hint: 1, None
+            height: dp(50)
+            on_release: root.save()
+
+
+
+
+
+<RTextInput>:
     
 
 
@@ -12,10 +40,19 @@
     orientation: "vertical"
     MenuLayout:
         size_hint_y: None
-        hieght: dp(50)
+        height: dp(50)
     MainActivity:
         Button:
             text: "Success"
     BottomLayout:
         size_hint_y: None
         height: dp(50)
+
+
+<LabelTextInput>:
+    Label:
+        text: root.name
+    RTextInput:
+        id: text
+    RTextInput:
+        id: quant
