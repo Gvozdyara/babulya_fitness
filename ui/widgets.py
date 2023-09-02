@@ -32,10 +32,10 @@ class BottomLayout(BoxLayout):
     ...
 
 
-class AddMealScreen(Screen):
+class AddMealScreen(BoxLayout):
     body = ObjectProperty()
     def __init__(self, role: str, container: dict, **kwargs):
-        super(Screen, self).__init__(**kwargs)
+        super(AddMealScreen, self).__init__(**kwargs)
         self.role = role
         self.container = container
     def add_line(self):
