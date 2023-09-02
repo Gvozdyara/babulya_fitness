@@ -1,4 +1,4 @@
-
+#: import os os
 <MenuLayout>:
 
 <MainActivity>:
@@ -80,16 +80,38 @@
 
 <DayLine>:
     size_hint_y: None
-    height: dp(40)
-    Label:
-        text: root.value.get("date")
-    Label:
-        text: root.value.get("proteins", 0)
-    Label:
-        text: root.value.get("fats", 0)
-    Label:
-        text: root.value.get("carboh", 0)
-    Label:
-        text: root.value.get("calories", 0)
-    Button:
-        text: "..."
+    height: dp(80)
+    orientation: "vertical"
+    BoxLayout:
+
+        Label:
+            text: root.value.get("date")
+        Label:
+            text: root.value.get("calories", 0)
+    BoxLayout:
+        BoxLayout:
+            size_hint_x: None
+            width: dp(5)
+        Image:
+            source: os.path.join("assets", "meat.png")
+            size: dp(15), dp(15)
+        Label:
+            text: root.value.get("proteins", 0)
+            size_hint: None, None
+            size: dp(15), dp(15)
+        Image:
+            source: os.path.join("assets", "fat.png")
+            size: dp(15), dp(15)
+        Label:
+            text: root.value.get("fats", 0)
+            size_hint: None, None
+            size: dp(15), dp(15)
+        Image:
+            source: os.path.join("assets", "carboh.png")
+            size: dp(15), dp(15)
+        Label:
+            text: root.value.get("carboh", 0)
+            size_hint: None, None
+            size: dp(15), dp(15)
+        Button:
+            text: "...>"

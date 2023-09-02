@@ -6,6 +6,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from ui import widgets
 from kivy.properties import ObjectProperty
 
+import constants as cnst
+
 
 class MainLayout(BoxLayout):
     def __init__(self, **kwargs):
@@ -17,7 +19,7 @@ class MainLayout(BoxLayout):
 
         for i in reversed(range(1, 30)):
             data = {
-                "date": datetime(2023, 8, i).isoformat(),
+                "date": f'{cnst.WEEK_DAYS[datetime(2023, 8, i).weekday()]} {datetime(2023, 8, i).strftime("%d.%m.%Y")}',
                 "proteins": str(randint(0, 20)),
                 "fats": str(randint(0, 20)),
                 "carboh": str(randint(0, 60)),
