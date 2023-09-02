@@ -12,14 +12,10 @@
                 BoxLayout:
                     id: body
                     size_hint_y: None
-                    height: self.minimum_height
+                    height: max((self.minimum_height, dp(600)))
                     orientation: "vertical"
                 BoxLayout:
 
-        Button:
-            text: "Add"
-            size_hint_y: None
-            height: dp(40)
 
 
 
@@ -28,12 +24,11 @@
 <AddMealScreen>:
     body: body
     BoxLayout:
-        id: body
         orientation: "vertical"
-        LabelTextInput:
-            name: "Название"
         BoxLayout:
-            id: empty_spacing
+            id: body
+            orientation: "vertical"
+            spacing: dp(3)
         BoxLayout:
             BoxLayout:
             Button:
@@ -57,12 +52,20 @@
 
 
 <MainLayout>:
+    main_activity: main_activity
     orientation: "vertical"
     MenuLayout:
         size_hint_y: None
         height: dp(50)
     MainActivity:
         id: main_activity
+        orientation: "vertical"
+
+        Button:
+            text: "Add"
+            size_hint_y: None
+            height: dp(40)
+            on_release: root.show_add_meal_screen()
     BottomLayout:
         size_hint_y: None
         height: dp(50)
@@ -74,9 +77,12 @@
     Label:
         text: root.name
     RTextInput:
-        id: text
+        id: name
+    Label:
+        text: "Количество"
     RTextInput:
         id: quant
+
 
 <DayLine>:
     size_hint_y: None

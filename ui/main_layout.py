@@ -7,12 +7,19 @@ from ui import widgets
 from kivy.properties import ObjectProperty
 
 import constants as cnst
+from viewmodels.main_activity_vm import MainActivityVM
+from ui.widgets import AddMealScreen
 
 
 class MainLayout(BoxLayout):
-    def __init__(self, **kwargs):
+    main_activity: BoxLayout = ObjectProperty()
+    def __init__(self, main_activity_vm: MainActivityVM, **kwargs):
         super(MainLayout, self).__init__(**kwargs)
         self.fake_content()
+
+    def show_add_meal_screen(self):
+        self.main_activity.ids.body.clear_widgets()
+        self.main_activity.ids.body.add_widget(AddMealScreen("meal", {}))
 
     def fake_content(self):
         dic = []
@@ -24,7 +31,6 @@ class MainLayout(BoxLayout):
                 "fats": str(randint(0, 20)),
                 "carboh": str(randint(0, 60)),
                 "calories": str(randint(0, 1000)),
-
             }
             dic.append(data)
         self.ids.main_activity.show_data(dic)
