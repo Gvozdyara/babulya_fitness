@@ -9,5 +9,5 @@ copy \\wsl.localhost\Ubuntu\home\makspeshkov\python_projects\babulya_fitness\bin
 adb kill-server
 adb start-server
 pause
-adb install -r apk\myapp-0.1-arm64-v8a_armeabi-v7a-debug.apk
+adb install -r apk\babulyafitness-0.1-arm64-v8a_armeabi-v7a-debug.apk
 pause
