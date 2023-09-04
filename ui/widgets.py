@@ -11,7 +11,7 @@ from structures.food import Meal
 
 class LabelTextInput(BoxLayout):
 
-    def __init__(self, name, **kwargs):
+    def __init__(self, name="", **kwargs):
         self.name = name
         super(LabelTextInput, self).__init__(**kwargs)
         self.ids.text = name
@@ -63,7 +63,7 @@ class AddMealScreen(BoxLayout):
         if not self.container:
             return
         acc = da.DataAccess()
-        acc.add_meal(self.container, datetime.now())
+        acc.add_food_to_day(self.container, datetime.now())
 
 
 class RTextInput(TextInput):
