@@ -9,9 +9,12 @@ class Meal:
     
 
 @dataclass    
-class BaseFood:
+class Food:
     
     name: str
     proteins: int
     fats: int
     carbohydrates: int
+    kcal: int
+    quantity_unit: str
+
