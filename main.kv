@@ -74,8 +74,12 @@
 
 <AddFoodLine>:
     orientation: "vertical"
+    size_hint_y: None
+    height: dp(100)
     LabelTextInput:
+        id: name
         name: "Название"
+        on_name_value: root.show_food_name_hint(self.name_value)
     BoxLayout:
         LabelTextInput:
             name: "Белки"
@@ -86,16 +90,25 @@
 
 
 <LabelTextInput>:
+    name_label: name_label
     size_hint_y: None
     height: dp(40)
     Label:
+        id: name_label
         text: root.name
     RTextInput:
         id: name
-    Label:
-        text: "Количество"
-    RTextInput:
-        id: quant
+        on_text: lambda prop: setattr(root, "name_value", value)
+
+
+<NameHintsBox@RecycleView>:
+    viewclass: "Button"
+    RecycleBoxLayout:
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
 
 
 <DayLine>:

@@ -17,7 +17,7 @@ class DataAccess:
     def _init_diary_table(self):
         q = """
             CREATE TABLE IF NOT EXISTS diary (
-            id INTEGER AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT)
         """
         self.cur.execute(q)
@@ -25,21 +25,27 @@ class DataAccess:
     def _init_food_table(self):
         q = """
             CREATE TABLE IF NOT EXISTS food (
-            id INTEGER AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT ,
             name TEXT,
             proteins INTEGER, 
             fats INTEGER, 
             carbohydrates INTEGER, 
             kcal INTEGER,
-            quantity_unit TEXT
+            quantity_unit TEXT)
             
         """
         self.cur.execute(q)
 
-    def get_all_meals(self):
+    def get_all_food_names(self):
 
-        q = "SELECT name FROM meals"
+        q = "SELECT name FROM food"
         self.cur.execute(q)
+        return self.cur.fetchall()
+
+    def filter_food_names(self, chunk: str) -> list:
+        q = """SELECT name from food
+                 WHERE name like "%?%" """
+        self.cur.execute()
         return self.cur.fetchall()
 
     def create_table_for_day(self, day: datetime):
@@ -73,3 +79,5 @@ class DataAccess:
         q = """INSERT INTO food (name, proteins, fats, carbohydrates, kcal, quantity_unit)
                          VALUES (?, ?, ?, ?, ?, ?)"""
         self.cur.execute(q, dataclasses.fields(food))
+
+DA = DataAccess()
